@@ -7,6 +7,7 @@ on init
     mount none /system/etc/audio_policy_configuration.xml /vendor/etc/audio/audio_policy_configuration.xml bind
     mount none /system/etc/media_codecs.xml /vendor/etc/media_codecs.xml bind
     mount none /system/overlay/BluetoothResCommon.apk /vendor/overlay/BluetoothResCommon.apk bind
+    mount none /system/etc/msm_irqbalance.conf /vendor/etc/msm_irqbalance.conf bind
 	
     chown system camera /dev/drv8846_dev
     chown system camera /dev/akm09970
