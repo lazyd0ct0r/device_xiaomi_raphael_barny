@@ -1,0 +1,21 @@
+on property:vendor.post_boot.parsed=1
+
+# Setup EAS cpusets values for better load balancing
+    write /dev/cpuset/background/cpus 0-3
+    write /dev/cpuset/system-background/cpus 0-3
+    write /dev/cpuset/foreground/cpus 0-6
+    write /dev/cpuset/display/cpus 0-3
+	
+    # For better screen off idle
+    write /dev/cpuset/restricted/cpus "0-3"
+	
+    # Set GPU idle timeout
+    write /sys/class/drm/card0/device/idle_timeout_ms 64
+
+    # Adjust Read Ahead
+    write /sys/block/sda/queue/read_ahead_kb 128
+    write /sys/block/dm-0/queue/read_ahead_kb 128
+
+    # Restart IRQ balancer after boot complete
+    stop vendor.msm_irqbalance
+    start vendor.msm_irqbalance

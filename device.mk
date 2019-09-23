@@ -48,6 +48,7 @@ PRODUCT_PACKAGES += \
 # Common init scripts
 PRODUCT_PACKAGES += \
     init.mi_thermald.rc \
+    init.target.rc \
     init.qcom.rc
 
 # Display
