@@ -1176,3 +1176,7 @@ product/lib/vendor.qti.hardware.iop@2.0.so|07472bae092e8a2073d532534d82c8115146e
 product/lib/vendor.qti.hardware.perf@2.0.so|20bf35ad29c46a8ae14dbae8983cd2a5b79c3784
 product/lib64/vendor.qti.hardware.iop@2.0.so|f40ce3fe82f85dba57df0185cc42e491da585329
 product/lib64/vendor.qti.hardware.perf@2.0.so|d4f082dcf0fedec3376144f91bc163c3c863ebd4
+product/lib/liblayerext.qti.so|570570af8d16c8f93f3cce57b9dde7f8905f3d14
+product/lib/libsmomo.qti.so|7beb49de9686c6ca45b180e91420d738cc59d5c2
+product/lib64/liblayerext.qti.so|374e54bfc9216844e2631a7f8245c6d09a313ff7
+product/lib64/libsmomo.qti.so|517b0911c331ff4d6b01413d759e7f874d7d801b
