@@ -341,6 +341,16 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/power/config/msmnile/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 
+PRODUCT_PACKAGES += \
+    workloadclassifier \
+    QPerformance \
+    UxPerformance
+
+PRODUCT_PACKAGES += \
+    vendor.qti.hardware.audiohalext-utils \
+    libqct_resampler \
+    vendor.qti.hardware.audiohalext@1.0
+
 #QTI performance
 PRODUCT_BOOT_JARS += \
     QPerformance \
