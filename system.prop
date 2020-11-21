@@ -93,6 +93,9 @@ debug.sf.earlyGl.app.duration=21000000
 ro.surface_flinger.protected_contents=true
 ro.surface_flinger.use_color_management=true
 
+# Use Vulkan backend for Skia UI rendering
+debug.hwui.renderer=skiavk
+
 # WiFi
 wifi.interface=wlan0
 
