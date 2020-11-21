@@ -164,6 +164,7 @@ persist.dbg.wfc_avail_ovr=1
 
 # Memory
 ro.vendor.qti.va_aosp.support=1
+persist.device_config.use_cgroup_freezer=true
 
 #Media
 media.settings.xml=/vendor/etc/media_profiles_vendor.xml
