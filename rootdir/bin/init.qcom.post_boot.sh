@@ -52,37 +52,6 @@ function configure_memory_parameters() {
     mkswap /dev/block/zram0
     swapon /dev/block/zram0 -p 32758
 
-    # Read adj series and set adj threshold for PPR and ALMK.
-    # This is required since adj values change from framework to framework.
-    adj_series=`cat /sys/module/lowmemorykiller/parameters/adj`
-    adj_1="${adj_series#*,}"
-    set_almk_ppr_adj="${adj_1%%,*}"
-
-    # PPR and ALMK should not act on HOME adj and below.
-    # Normalized ADJ for HOME is 6. Hence multiply by 6
-    # ADJ score represented as INT in LMK params, actual score can be in decimal
-    # Hence add 6 considering a worst case of 0.9 conversion to INT (0.9*6).
-    # For uLMK + Memcg, this will be set as 6 since adj is zero.
-    set_almk_ppr_adj=$(((set_almk_ppr_adj * 6) + 6))
-    echo $set_almk_ppr_adj > /sys/module/lowmemorykiller/parameters/adj_max_shift
-
-    # Calculate vmpressure_file_min as below & set for 64 bit:
-    # vmpressure_file_min = last_lmk_bin + (last_lmk_bin - last_but_one_lmk_bin)
-    minfree_series=`cat /sys/module/lowmemorykiller/parameters/minfree`
-    minfree_1="${minfree_series#*,}" ; rem_minfree_1="${minfree_1%%,*}"
-    minfree_2="${minfree_1#*,}" ; rem_minfree_2="${minfree_2%%,*}"
-    minfree_3="${minfree_2#*,}" ; rem_minfree_3="${minfree_3%%,*}"
-    minfree_4="${minfree_3#*,}" ; rem_minfree_4="${minfree_4%%,*}"
-    minfree_5="${minfree_4#*,}"
-
-    vmpres_file_min=$((minfree_5 + (minfree_5 - rem_minfree_4)))
-    echo $vmpres_file_min > /sys/module/lowmemorykiller/parameters/vmpressure_file_min
-
-    # Enable adaptive LMK for all targets &
-    # use Google default LMK series for all 64-bit targets >=2GB.
-    echo 1 > /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk
-    echo 1 > /sys/module/lowmemorykiller/parameters/oom_reaper
-
     # Set allocstall_threshold to 0 for all targets.
     # Set swappiness to 100 for all targets
     echo 0 > /sys/module/vmpressure/parameters/allocstall_threshold
@@ -123,8 +92,10 @@ case "$target" in
     echo 95 95 > /proc/sys/kernel/sched_upmigrate
     echo 85 85 > /proc/sys/kernel/sched_downmigrate
     echo 100 > /proc/sys/kernel/sched_group_upmigrate
-    echo 10 > /proc/sys/kernel/sched_group_downmigrate
+    echo 15 > /proc/sys/kernel/sched_group_downmigrate
+    echo 400000000 > /proc/sys/kernel/sched_coloc_downmigrate_ns
     echo 1 > /proc/sys/kernel/sched_walt_rotate_big_tasks
+    echo 30 > /proc/sys/kernel/sched_min_task_util_for_colocation
 
     # cpuset parameters
     echo 0-1 > /dev/cpuset/background/cpus
@@ -138,31 +109,35 @@ case "$target" in
     echo 2000 > /dev/blkio/blkio.group_idle
     echo 0 > /dev/blkio/background/blkio.group_idle
 
+    # Set min cpu freq
+    echo 576000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+    echo 710400 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
+    echo 825600 > /sys/devices/system/cpu/cpu7/cpufreq/scaling_min_freq
+
     # Configure governor settings for silver cluster
     echo "schedutil" > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
     echo 0 > /sys/devices/system/cpu/cpufreq/policy0/schedutil/up_rate_limit_us
     echo 0 > /sys/devices/system/cpu/cpufreq/policy0/schedutil/down_rate_limit_us
     echo 1209600 > /sys/devices/system/cpu/cpufreq/policy0/schedutil/hispeed_freq
-    echo 576000 > /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
     echo 1 > /sys/devices/system/cpu/cpufreq/policy0/schedutil/pl
 
     # Configure governor settings for gold cluster
     echo "schedutil" > /sys/devices/system/cpu/cpufreq/policy4/scaling_governor
-    echo 0 > /sys/devices/system/cpu/cpufreq/policy0/schedutil/up_rate_limit_us
-    echo 0 > /sys/devices/system/cpu/cpufreq/policy0/schedutil/down_rate_limit_us
+    echo 0 > /sys/devices/system/cpu/cpufreq/policy4/schedutil/up_rate_limit_us
+    echo 0 > /sys/devices/system/cpu/cpufreq/policy4/schedutil/down_rate_limit_us
     echo 1612800 > /sys/devices/system/cpu/cpufreq/policy4/schedutil/hispeed_freq
     echo 1 > /sys/devices/system/cpu/cpufreq/policy4/schedutil/pl
 
     # Configure governor settings for gold+ cluster
     echo "schedutil" > /sys/devices/system/cpu/cpufreq/policy7/scaling_governor
-    echo 0 > /sys/devices/system/cpu/cpufreq/policy0/schedutil/up_rate_limit_us
-    echo 0 > /sys/devices/system/cpu/cpufreq/policy0/schedutil/down_rate_limit_us
+    echo 0 > /sys/devices/system/cpu/cpufreq/policy7/schedutil/up_rate_limit_us
+    echo 0 > /sys/devices/system/cpu/cpufreq/policy7/schedutil/down_rate_limit_us
     echo 1612800 > /sys/devices/system/cpu/cpufreq/policy7/schedutil/hispeed_freq
     echo 1 > /sys/devices/system/cpu/cpufreq/policy7/schedutil/pl
 
-    # Configure input boost settings
-    echo "0:1017600" > /sys/module/cpu_boost/parameters/input_boost_freq
-    echo 80 > /sys/module/cpu_boost/parameters/input_boost_ms
+    # configure input boost settings
+    echo "0:1324800" > /sys/module/cpu_boost/parameters/input_boost_freq
+    echo 120 > /sys/module/cpu_boost/parameters/input_boost_ms
 
     # Disable wsf, beacause we are using efk.
     # wsf Range : 1..1000 So set to bare minimum value 1.
@@ -258,8 +233,6 @@ case "$target" in
     find /sys/devices -name read_ahead_kb | while read node; do echo 128 > $node; done
 
     configure_memory_parameters
-
-    echo "18432,23040,27648,32256,85296,120640" > /sys/module/lowmemorykiller/parameters/minfree
     ;;
 esac
 
