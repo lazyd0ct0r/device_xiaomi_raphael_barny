@@ -631,7 +631,7 @@ vendor/lib/libOmxApeDecSw.so|281c7f2ea570dab8d1ae73a385b62ad015a6dbf9
 vendor/lib/libOmxDsdDec.so|2ed9ab0f0768c8cfd223762e09fb73a4e92423b0
 vendor/lib/libOmxEvrcDec.so|394fdd9569f3dbd2484a456432640c25005fff77
 vendor/lib/libOmxG711Dec.so|de4774eacbb34f3fd681bb2c8469c6406653e123
-vendor/lib/libswvdec.so|01a01ac0456ce24acba9f61259975cf702925100
+vendor/lib/libswvdec.so|67c611c3d613612716de3469fcfdfec20446d789
 vendor/lib/libOmxQcelp13Dec.so|58370cbd70146383d766efc6cf945b07d9ffaa89
 vendor/lib/libOmxVpp.so|2f743b78f20928198c4d479580b0a3409190b981
 vendor/lib/libOmxWmaDec.so|a8b216fd308b307e4ad5c32ec804aec437be94ff
