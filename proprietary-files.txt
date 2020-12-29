@@ -873,7 +873,6 @@ vendor/radio/qcril_database/upgrade/4_version_update_ecc_table.sql|0734c6a2863ed
 vendor/radio/qcril_database/upgrade/5_version_update_ecc_table.sql|fcb2cba3bfd718ecdc8d3cfac3a0b2b2c7e8c506
 vendor/radio/qcril_database/upgrade/6_version_update_ecc_table.sql|0fdf4b6ccb48906b37885e060429f79c9fd6bdbf
 vendor/radio/qcril_database/upgrade/7_version_update_ecc_table.sql|9a76d5747da2876b87b214579c9d74ae92d218d7
-system_ext/framework/qti-telephony-common.jar|7b27911a3a9f349c7d80e25a2b0cb32f4620d5ed
 
 # Radio_IMS - from LA.UM.9.1.r1-07300-SMxxx0.0
 system_ext/etc/permissions/com.qualcomm.qti.imscmservice.xml|db25ef24f1937366d58a53b4f4b8923bc9e98d2d
@@ -907,7 +906,6 @@ system_ext/lib64/vendor.qti.ims.callinfo@1.0.so|fc73f19c3f7972cebd205001170f2693
 system_ext/lib64/vendor.qti.ims.rcsconfig@1.0.so|ec0ddc70f917250971c89a1adcc9122e04f93d5d
 system_ext/lib64/vendor.qti.imsrtpservice@3.0.so|393c5affc1e8e36470705ec44396d1ffa603a541
 system_ext/lib64/vendor.qti.ims.factory@1.0.so|fbebef1b0de8dbb2a2d059175bf53fa08ef20623
--system_ext/priv-app/ims/ims.apk|9fb2e0c4c030e46c9285cbfa36ccdf0cccf8566f
 vendor/bin/ims_rtp_daemon|d2ab8078c32652d8aa6db4ee4d54ce4321aaee34
 vendor/bin/imsdatadaemon|bb7bd89b735b31461e27409b3da25c235873f758
 vendor/bin/imsqmidaemon|b2e72d4332c4224c3c02c3fdad93aaf2214afc6a
@@ -952,6 +950,10 @@ vendor/lib64/vendor.qti.ims.rcsconfig@1.0.so|bddca6b11f462b1ca04be211558d676c8e4
 vendor/lib64/vendor.qti.ims.rcsconfig@2.0.so|dee439bc54d7708685fcb69848d3d6471c2e9865
 vendor/lib64/vendor.qti.imsrtpservice@3.0.so|25517caf74691b812320b46b477a3f4161cc1bcf
 vendor/lib64/vendor.qti.imsrtpservice@3.0-service-Impl.so|e63891d94ccc16edb0d276803202e843e62e8832
+
+# Telephony - from LA.QSSI.11.0.r1-07800-qssi.0.
+system_ext/framework/qti-telephony-common.jar|7d684c5220f5a2a5778bac40f95d852de68dd1a6
+-system_ext/priv-app/ims/ims.apk|61507a8ad66f4f299fe66e11ff71eeb3e2fe5259
 
 # SSR
 vendor/bin/ssr_setup
