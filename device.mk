@@ -442,6 +442,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl
 
+# Smart Charge
+PRODUCT_PACKAGES += \
+    vendor.syberia.smartcharge@1.0-service
+
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl \
