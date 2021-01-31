@@ -86,6 +86,10 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth/include
 # Charger Mode
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
+# Smartcharge
+TARGET_SMARTCHARGE_CONTROL_NODE := "sys/class/power_supply/battery/input_suspend"
+TARGET_SMARTCHARGE_REVERSE_LOGIC := true
+
 # Display
 TARGET_USES_ION := true
 TARGET_USES_NEW_ION_API := true
