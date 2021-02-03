@@ -87,8 +87,8 @@ void vendor_load_properties()
     }
 
     // fingerprint
-    property_override("ro.build.description", "coral-user 11 RQ1A.210105.003 7005429 release-keys");
-    property_override_multi("ro.build.fingerprint", "ro.vendor.build.fingerprint","ro.bootimage.build.fingerprint", "google/coral/coral:11/RQ1A.210105.003/7005429:user/release-keys");
+    property_override("ro.build.description", "coral-user 11 RQ1A.210205.004 7038034 release-keys");
+    property_override_multi("ro.build.fingerprint", "ro.vendor.build.fingerprint","ro.bootimage.build.fingerprint", "google/coral/coral:11/RQ1A.210205.004/7038034:user/release-keys");
 
     load_dalvikvm_properties();
 }
