@@ -17,6 +17,7 @@ persist.vendor.bt.a2dp.aac_whitelist=false
 ro.bluetooth.emb_wp_mode=false
 ro.bluetooth.wipower=false
 vendor.bluetooth.soc=cherokee
+persist.bluetooth.sbc_hd_higher_bitrate=1
 
 # Camera
 vendor.camera.sat.fallback.dist=40
