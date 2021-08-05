@@ -10,3 +10,6 @@ type vendor_sysfs_msm_subsys, sysfs_type, fs_type;
 
 # Livedisplay
 type vendor_sysfs_hbm, sysfs_type, fs_type;
+
+# Thermal
+type thermal_link_device, dev_type;
