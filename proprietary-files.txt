@@ -865,6 +865,14 @@ vendor/firmware/a640_zap.b02
 vendor/firmware/a640_zap.elf
 vendor/firmware/a640_zap.mdt
 
+# Touchfeature
+vendor/bin/hw/vendor.xiaomi.hardware.touchfeature@1.0-service
+vendor/etc/init/vendor.xiaomi.hardware.touchfeature@1.0-service.rc
+vendor/lib64/hw/vendor.xiaomi.hardware.touchfeature@1.0-impl.so
+vendor/lib64/vendor.xiaomi.hardware.touchfeature@1.0.so
+vendor/lib/hw/vendor.xiaomi.hardware.touchfeature@1.0-impl.so
+vendor/lib/vendor.xiaomi.hardware.touchfeature@1.0.so
+
 # Firmware (touchscreen)
 vendor/firmware/goodix_gt9886_limit_f11_first.tporder
 vendor/firmware/goodix_gt9886_limit_f11_second.tporder
