@@ -1,0 +1,11 @@
+# Needed to traverse platform low power stats
+r_dir_file(hal_power_stats_default, sysfs_power_stats)
+
+# Needed to traverse subsystem low power stats
+r_dir_file(hal_power_stats_default, vendor_sysfs_msm_subsys)
+
+# The following folders are incidentally accessed by hal_power_stats_default and are not needed.
+dontaudit hal_power_stats_default sysfs:file read;
+
+vndbinder_use(hal_power_stats)
+add_service(hal_power_stats_server, power_stats_service)

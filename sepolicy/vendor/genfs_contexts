@@ -14,6 +14,10 @@ genfscon sysfs /devices/platform/soc/soc:qcom,cpu0-cpu-l3-lat                   
 genfscon sysfs /devices/platform/soc/soc:qcom,cpu6-cpu-l3-lat                   u:object_r:vendor_sysfs_msm_subsys:s0
 genfscon sysfs /devices/platform/soc/1d84000.ufshc/clkgate_enable               u:object_r:vendor_sysfs_scsi_host:s0
 
+# Pixel Powerstats
+genfscon sysfs /power/system_sleep/stats                                                                                                                            u:object_r:sysfs_power_stats:s0
+genfscon sysfs /power/rpmh_stats/master_stats                                                                                                                       u:object_r:sysfs_power_stats:s0
+
 genfscon sysfs /devices/platform/goodix_ts.0/wakeup                                                                                                         u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/171c0000.slim/tavil-slim-pgd/wakeup                                                                                    u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/18800000.qcom,icnss/wakeup/wakeup                                                                                      u:object_r:sysfs_wakeup:s0

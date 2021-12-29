@@ -13,3 +13,6 @@ type vendor_sysfs_hbm, sysfs_type, fs_type;
 
 # Thermal
 type thermal_link_device, dev_type;
+
+# Pixel Powerstats
+type sysfs_power_stats, sysfs_type, fs_type;
