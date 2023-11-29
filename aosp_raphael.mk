@@ -12,17 +12,25 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
 # Inherit from raphael device
 $(call inherit-product, device/xiaomi/raphael/device.mk)
 
-# Inherit some common Suberia OS stuff.
-$(call inherit-product, vendor/syberia/common.mk)
-SYBERIA_BUILD_TYPE := OFFICIAL
-EXTRA_UDFPS_ANIMATIONS := true
-TARGET_BOOT_ANIMATION_RES := 1080
-TARGET_INCLUDE_PIXEL_CHARGER := true
+# Inherit some common PixelExperience stuff
+TARGET_SUPPORTS_GOOGLE_RECORDER := true
+TARGET_INCLUDE_STOCK_ARCORE := true
+TARGET_INCLUDE_LIVE_WALLPAPERS := true
 TARGET_SUPPORTS_QUICK_TAP := true
-WITH_GMS := true
+TARGET_SUPPORTS_CALL_RECORDING := true
+$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
+
+# Additional Pixel stuffs
+TARGET_INCLUDE_CARRIER_SETTINGS := true
+TARGET_INCLUDE_PIXEL_IMS := true
+TARGET_NOT_SUPPORTS_GOOGLE_BATTERY := true
+TARGET_FLATTEN_APEX := false
+MAINLINE_INCLUDE_VIRT_MODULE := false
+TARGET_GBOARD_KEY_HEIGHT := 1.2
+$(call inherit-product-if-exists, vendor/pixel-additional/config.mk)
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := syberia_raphael
+PRODUCT_NAME := aosp_raphael
 PRODUCT_DEVICE := raphael
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MANUFACTURER := Xiaomi

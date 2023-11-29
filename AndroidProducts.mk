@@ -5,9 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/syberia_raphael.mk
+    $(LOCAL_DIR)/aosp_raphael.mk
 
 COMMON_LUNCH_CHOICES := \
-    syberia_raphael-user \
-    syberia_raphael-userdebug \
-    syberia_raphael-eng
+    aosp_raphael-user \
+    aosp_raphael-userdebug \
+    aosp_raphael-eng

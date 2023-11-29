@@ -25,24 +25,6 @@
    },
    {
       "remote":"github",
-      "repository":"LineageOS/android_packages_apps_FMRadio",
-      "target_path":"packages/apps/FMRadio",
-      "branch":"lineage-21.0"
-   },
-   {
-      "remote":"github",
-      "repository":"LineageOS/android_vendor_qcom_opensource_fm-commonsys",
-      "target_path":"vendor/qcom/opensource/fm-commonsys",
-      "branch":"lineage-21.0"
-   },
-   {
-      "remote":"github",
-      "repository":"LineageOS/android_vendor_qcom_opensource_libfmjni",
-      "target_path":"vendor/qcom/opensource/libfmjni",
-      "branch":"lineage-21.0"
-   },
-   {
-      "remote":"github",
       "repository":"ThankYouMario/proprietary_vendor_qcom_common",
       "target_path":"vendor/qcom/common",
       "branch":"topaz"
