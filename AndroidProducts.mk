@@ -5,9 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_raphael.mk
+    $(LOCAL_DIR)/syberia_raphael.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_raphael-user \
-    lineage_raphael-userdebug \
-    lineage_raphael-eng
+    syberia_raphael-user \
+    syberia_raphael-userdebug \
+    syberia_raphael-eng
