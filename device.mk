@@ -324,11 +324,40 @@ PRODUCT_PACKAGES += \
 
 # Media
 PRODUCT_PACKAGES += \
+    android.hardware.media.c2@1.0.vendor \
+    libavservices_minijail \
+    libavservices_minijail.vendor \
     libavservices_minijail_vendor \
-    libminijail
+    libcodec2_hidl@1.0.vendor \
+    libcodec2_vndk.vendor \
+    libmedia_ecoservice.vendor \
+    libstagefright_bufferpool@2.0.1.vendor
 
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/media/,$(TARGET_COPY_OUT_VENDOR)/etc)
+
+PRODUCT_COPY_FILES += \
+    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_c2_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_c2_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2_video.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_telephony.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video_le.xml
+
+# Enable Codec 2.0
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.media.codec2=2 \
+    debug.stagefright.ccodec=4 \
+    debug.stagefright.omx_default_rank=512 \
+
+# Disable OMX
+PRODUCT_PROPERTY_OVERRIDES += \
+    vendor.media.omx=0 \
+
+# Create input surface on the framework side
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.stagefright.c2inputsurface=-1 \
 
 # Native Public Libraries
 PRODUCT_COPY_FILES += \
