@@ -16,6 +16,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 # Updatable APEXs are a necessity to boot in U.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
+# Use mimalloc allocator instead of jemalloc
+PRODUCT_USE_MIMALLOC := true
+
 # Get Qcom components
 TARGET_EXCLUDE_QCOM_SEPOLICY := true
 TARGET_BOARD_PLATFORM := msmnile
