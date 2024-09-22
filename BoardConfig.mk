@@ -71,6 +71,10 @@ TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 TARGET_INPUTDISPATCHER_SKIP_EVENT_KEY := 338
 TARGET_SURFACEFLINGER_UDFPS_LIB := //hardware/xiaomi:libudfps_extension.xiaomi
 TARGET_USES_FOD_ZPOS := true
+$(call soong_config_set, BIOMETRIC_XIAOMI, USES_UDFPS_SENSOR, true)
+$(call soong_config_set, BIOMETRIC_XIAOMI, UDFPS_LOCATION_X, 540)
+$(call soong_config_set, BIOMETRIC_XIAOMI, UDFPS_LOCATION_Y, 2026)
+$(call soong_config_set, BIOMETRIC_XIAOMI, UDFPS_RADIUS, 95)
 
 # FM
 BOARD_HAVE_QCOM_FM := true
