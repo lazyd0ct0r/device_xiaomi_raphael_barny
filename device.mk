@@ -432,8 +432,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.media.omx@1.0-service \
     libc2dcolorconvert \
-    libcodec2_hidl@1.0.vendor \
-    libcodec2_vndk.vendor \
     libmm-omxcore \
     libOmxAacEnc \
     libOmxAmrEnc \
@@ -646,6 +644,7 @@ PRODUCT_PACKAGES += \
     libprocessgroup.vendor \
     libdumpstateutil.vendor \
     libjsoncpp.vendor \
+    llibpng.vendor \
     libcurl.vendor \
     libpng.vendor:32
 
