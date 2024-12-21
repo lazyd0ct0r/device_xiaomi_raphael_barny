@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#define LOG_TAG "UdfpsHandler.xiaomi_msmnile"
+#define LOG_TAG "UdfpsHandler.xiaomi_raphael"
 
 #include "UdfpsHandler.h"
 
@@ -18,15 +18,8 @@
 #define PARAM_NIT_FOD 1
 #define PARAM_NIT_NONE 0
 
-static const char* kFodUiPaths[] = {
-        "/sys/devices/platform/soc/soc:qcom,dsi-display-primary/fod_ui",
-        "/sys/devices/platform/soc/soc:qcom,dsi-display/fod_ui",
-};
-
-static const char* kFodStatusPaths[] = {
-        "/sys/touchpanel/fod_status",
-        "/sys/devices/virtual/touch/tp_dev/fod_status",
-};
+#define FOD_STATUS_PATH "/sys/devices/virtual/touch/tp_dev/fod_status"
+#define FOD_UI_PATH "/sys/devices/platform/soc/soc:qcom,dsi-display-primary/fod_ui"
 
 static bool readBool(int fd) {
     char c;
@@ -53,26 +46,17 @@ class XiaomiMsmnileUdfpsHandler : public UdfpsHandler {
         mDevice = device;
 
         std::thread([this]() {
-            int fodUiFd;
-            for (auto& path : kFodUiPaths) {
-                fodUiFd = open(path, O_RDONLY);
-                if (fodUiFd >= 0) {
-                    break;
-                }
-            }
-
+            int fodUiFd = open(FOD_UI_PATH, O_RDONLY);
             if (fodUiFd < 0) {
                 LOG(ERROR) << "failed to open fd, err: " << fodUiFd;
                 return;
             }
 
-            int fodStatusFd;
-            for (auto& path : kFodStatusPaths) {
-                fodStatusFd = open(path, O_WRONLY);
+            int fodStatusFd = open(FOD_STATUS_PATH, O_WRONLY);
                 if (fodStatusFd >= 0) {
-                    break;
+                LOG(ERROR) << "failed to open fd, err: " << fodStatusFd;
+                return;
                 }
-            }
 
             struct pollfd fodUiPoll = {
                     .fd = fodUiFd,
