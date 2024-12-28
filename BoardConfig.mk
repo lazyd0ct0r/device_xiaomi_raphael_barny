@@ -7,6 +7,8 @@
 DEVICE_PATH := device/xiaomi/raphael
 KERNEL_PATH := device/xiaomi/raphael-kernel
 
+-include vendor/lineage-priv/keys/keys.mk
+
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "qualcomm-hidl"
 
