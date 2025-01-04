@@ -13,7 +13,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
 $(call inherit-product, device/xiaomi/raphael/device.mk)
 
 # Inherit some common YAAP stuff.
-$(call inherit-product, vendor/yaap/config/common_full_phone.mk)
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # Gapps
 #TARGET_BUILD_GAPPS := true
@@ -27,7 +27,7 @@ TARGET_SCREEN_WIDTH := 1080
 TARGET_PROVIDES_POWERHAL := true
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := yaap_raphael
+PRODUCT_NAME := lineage_raphael
 PRODUCT_DEVICE := raphael
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MANUFACTURER := Xiaomi
@@ -37,3 +37,5 @@ PRODUCT_CHARACTERISTICS := nosdcard
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 BUILD_FINGERPRINT := Xiaomi/raphael/raphael:11/RKQ1.200826.002/V12.5.2.0.RFKMIXM:user/release-keys
+
+TARGET_DISABLE_EPPE := true
